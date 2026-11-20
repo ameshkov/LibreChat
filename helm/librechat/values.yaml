@@ -130,8 +130,8 @@ librechat-rag-api:
 
 
 image:
-  repository: librechat-ai/librechat
-  registry: registry.librechat.ai
+  repository: ameshkov/librechat
+  registry: ghcr.io
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -303,7 +303,7 @@ channelGateway:
   # Shared workers use durable leases and may run across replicas; single mode requires 1.
   replicaCount: 1
   image:
-    repository: ghcr.io/librechat-ai/librechat-channel-gateway
+    repository: ghcr.io/ameshkov/librechat-channel-gateway
     # Defaults to image.tag, which must explicitly select a release containing Channels.
     tag: ""
     pullPolicy: IfNotPresent

@@ -266,7 +266,7 @@ try {
     assert.equal(service.spec.type, 'ClusterIP');
     assert.equal(
       container.image,
-      `ghcr.io/librechat-ai/librechat-channel-gateway:${overrides['channelGateway.image.tag'] || overrides['image.tag'] || enabled['image.tag']}`,
+      `${defaults.channelGateway.image.repository}:${overrides['channelGateway.image.tag'] || overrides['image.tag'] || enabled['image.tag']}`,
     );
     assert.equal(
       env.LIBRECHAT_INTERNAL_URL.value,

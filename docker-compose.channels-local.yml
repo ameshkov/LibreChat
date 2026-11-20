@@ -1,0 +1,23 @@
+# Local-only glue for the Agent Channels overlays in this sandbox.
+#
+# The channels overlays mount "./librechat.yaml" and "./utils/docker/init-replica.js"
+# with relative paths, which Compose resolves inside this VM. The Docker daemon resolves
+# bind-mount sources on the host filesystem, so both mounts are re-declared here with
+# HOST_WORKSPACE paths, the same pattern as docker-compose.override.yml.
+#
+# Not part of the upstream repo. Usage is documented in the local run notes.
+
+services:
+  api:
+    volumes:
+      - type: bind
+        source: ${HOST_WORKSPACE}/librechat.yaml
+        target: /app/librechat.yaml
+        read_only: true
+
+  mongodb-init:
+    volumes:
+      - type: bind
+        source: ${HOST_WORKSPACE}/utils/docker/init-replica.js
+        target: /scripts/init-replica.js
+        read_only: true
