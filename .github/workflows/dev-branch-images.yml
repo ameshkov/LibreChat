@@ -38,7 +38,8 @@ jobs:
     with:
       images: >-
         [{"target":"api-build","file":"Dockerfile.multi","image_name":"lc-dev-api"},
-         {"target":"node","file":"Dockerfile","image_name":"lc-dev"}]
+         {"target":"node","file":"Dockerfile","image_name":"lc-dev"},
+         {"target":"runtime","file":"packages/channel-gateway/Dockerfile","image_name":"lc-dev-channel-gateway"}]
       tag_suffixes: |
         ${{ github.sha }}
         latest
