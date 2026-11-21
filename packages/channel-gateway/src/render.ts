@@ -29,9 +29,10 @@ export const artifactFailureNotice =
 const chunkLimit = 39_000;
 const presentationLimit = 64_000;
 /**
- * Slack rejects a message whose blocks carry about 13_000 characters in total with
- * `msg_blocks_too_long`, even when every documented per-block limit holds. Keep each
- * message below that undocumented ceiling.
+ * Slack documents a cumulative limit of 12,000 characters for all markdown blocks in
+ * one payload. A payload with mixed block types is rejected with `msg_blocks_too_long`
+ * near 13,000 characters, and the exact point moves with the payload shape. Keep every
+ * message at or below the documented markdown limit.
  */
 const blocksLimit = 12_000;
 function withinCharacters(value: string, limit: number): boolean {
